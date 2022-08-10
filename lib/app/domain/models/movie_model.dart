@@ -1,11 +1,8 @@
-import 'dart:convert';
-
 class Movie {
   Movie({
     required this.adult,
     required this.backdropPath,
     required this.belongsToCollection,
-    required this.budget,
     required this.genres,
     required this.homepage,
     required this.id,
@@ -29,7 +26,6 @@ class Movie {
   final bool adult;
   final String backdropPath;
   final dynamic belongsToCollection;
-  final int budget;
   final List<Genre> genres;
   final String homepage;
   final int id;
@@ -53,7 +49,6 @@ class Movie {
         adult: json["adult"],
         backdropPath: json["backdrop_path"],
         belongsToCollection: json["belongs_to_collection"],
-        budget: json["budget"],
         genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
         homepage: json["homepage"],
         id: json["id"],
@@ -78,7 +73,6 @@ class Movie {
         "adult": adult,
         "backdrop_path": backdropPath,
         "belongs_to_collection": belongsToCollection,
-        "budget": budget,
         "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
         "homepage": homepage,
         "id": id,
