@@ -1,49 +1,49 @@
 class Movie {
   Movie({
-    required this.adult,
-    required this.backdropPath,
-    required this.belongsToCollection,
-    required this.genres,
-    required this.homepage,
-    required this.id,
-    required this.imdbId,
-    required this.originalLanguage,
-    required this.originalTitle,
-    required this.overview,
-    required this.popularity,
-    required this.posterPath,
-    required this.releaseDate,
-    required this.revenue,
-    required this.runtime,
-    required this.status,
-    required this.tagline,
-    required this.title,
-    required this.video,
-    required this.voteAverage,
-    required this.voteCount,
+    this.adult,
+    this.backdropPath,
+    this.belongsToCollection,
+    this.genres,
+    this.homepage,
+    this.id,
+    this.imdbId,
+    this.originalLanguage,
+    this.originalTitle,
+    this.overview,
+    this.popularity,
+    this.posterPath,
+    this.releaseDate,
+    this.revenue,
+    this.runtime,
+    this.status,
+    this.tagline,
+    this.title,
+    this.video,
+    this.voteAverage,
+    this.voteCount,
   });
 
-  final bool adult;
-  final String backdropPath;
+  final bool? adult;
+  final String? backdropPath;
   final dynamic belongsToCollection;
-  final List<Genre> genres;
-  final String homepage;
-  final int id;
-  final String imdbId;
-  final String originalLanguage;
-  final String originalTitle;
-  final String overview;
-  final double popularity;
-  final String posterPath;
-  final DateTime releaseDate;
-  final int revenue;
-  final int runtime;
-  final String status;
-  final String tagline;
-  final String title;
-  final bool video;
-  final double voteAverage;
-  final int voteCount;
+  final List<Genre>? genres;
+  final String? homepage;
+  final int? id;
+  final String? imdbId;
+  final String? originalLanguage;
+  final String? originalTitle;
+  final String? overview;
+  final double? popularity;
+  final String? posterPath;
+  final DateTime? releaseDate;
+  final int? revenue;
+  final int? runtime;
+  final String? status;
+  final String? tagline;
+  final String? title;
+  final bool? video;
+  final double? voteAverage;
+  final int? voteCount;
 
   factory Movie.fromJson(Map<String, dynamic> json) => Movie(
         adult: json["adult"],
@@ -73,7 +73,7 @@ class Movie {
         "adult": adult,
         "backdrop_path": backdropPath,
         "belongs_to_collection": belongsToCollection,
-        "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
+        "genres": List<dynamic>.from(genres!.map((x) => x.toJson())),
         "homepage": homepage,
         "id": id,
         "imdb_id": imdbId,
@@ -83,7 +83,7 @@ class Movie {
         "popularity": popularity,
         "poster_path": posterPath,
         "release_date":
-            "${releaseDate.year.toString().padLeft(4, '0')}-${releaseDate.month.toString().padLeft(2, '0')}-${releaseDate.day.toString().padLeft(2, '0')}",
+            "${releaseDate?.year.toString().padLeft(4, '0')}-${releaseDate?.month.toString().padLeft(2, '0')}-${releaseDate?.day.toString().padLeft(2, '0')}",
         "revenue": revenue,
         "runtime": runtime,
         "status": status,
@@ -97,12 +97,12 @@ class Movie {
 
 class Genre {
   Genre({
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
   });
 
-  final int id;
-  final String name;
+  final int? id;
+  final String? name;
 
   factory Genre.fromJson(Map<String, dynamic> json) => Genre(
         id: json["id"],
