@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LikesAndPopularityRowWidget extends StatelessWidget {
-  final String? likesQuantity, popularityQuantity;
+  final String? popularityQuantity;
+  final int? likesQuantity;
 
   const LikesAndPopularityRowWidget(
       {Key? key, this.likesQuantity, this.popularityQuantity})
@@ -12,32 +13,32 @@ class LikesAndPopularityRowWidget extends StatelessWidget {
     return Row(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 15),
+          padding: const EdgeInsets.fromLTRB(15, 0, 15, 15),
           child: Row(
             children: [
               const Icon(
                 Icons.favorite,
-                size: 16,
+                size: 14,
               ),
               const SizedBox(
                 width: 5,
               ),
               Text(
-                likesQuantity ?? '1.2k likes',
+                '${likesQuantity.toString()} Likes',
                 style: textStyle(),
               ),
               const SizedBox(
                 width: 25,
               ),
               const Icon(
-                Icons.favorite,
-                size: 16,
+                Icons.remove_red_eye_outlined,
+                size: 14,
               ),
               const SizedBox(
                 width: 5,
               ),
               Text(
-                popularityQuantity ?? '200000',
+                '$popularityQuantity Popularity view',
                 style: textStyle(),
               ),
             ],
@@ -47,5 +48,5 @@ class LikesAndPopularityRowWidget extends StatelessWidget {
     );
   }
 
-  TextStyle textStyle() => const TextStyle(color: Colors.grey);
+  TextStyle textStyle() => const TextStyle(color: Colors.grey, fontSize: 12);
 }

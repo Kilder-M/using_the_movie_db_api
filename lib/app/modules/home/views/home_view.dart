@@ -66,7 +66,7 @@ class HomeView extends GetView<HomeController> {
 
   Container containerBlackContent(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.45,
+      height: MediaQuery.of(context).size.height * 0.50,
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.black,
@@ -93,8 +93,8 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
           LikesAndPopularityRowWidget(
-            popularityQuantity: controller.movie.value.popularity.toString(),
-          ),
+              popularityQuantity: controller.movie.value.popularity.toString(),
+              likesQuantity: controller.movie.value.voteCount),
           FutureBuilder(
               future: controller.getSimilarMoviesList(),
               builder: (context, snapshot) {
