@@ -108,9 +108,9 @@ class HomeView extends GetView<HomeController> {
                         var genreList = ['teste01', 'teste02'];
                         var similarMovies = controller.similarMoviesList[index];
                         return ListTileMovieListWidget(
-                            imageUrl:
-                                API.requestMovieImage(similarMovies.posterPath),
-                            textTitle: similarMovies.title,
+                            imageUrl: API.requestMovieImage(
+                                similarMovies.posterPath ?? ''),
+                            textTitle: similarMovies.title ?? '',
                             genreList: genreList,
                             releaseDate: similarMovies.releaseDate.toString());
                       }),
