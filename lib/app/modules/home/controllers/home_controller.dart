@@ -14,16 +14,18 @@ class HomeController extends GetxController {
 
   var movie = Movie().obs;
   var similarMoviesList = <SimilarMovies>[].obs;
+  var isTapFavoriteIcon = false.obs;
   HomeController() {
     getMovie();
     getSimilarMoviesList();
   }
 
   Future<Movie> getMovie() async {
-    return movie.value = await _movieService.getMovie(550);
+    return movie.value = await _movieService.getMovie(324786);
   }
 
   Future<List<SimilarMovies>> getSimilarMoviesList() async {
-    return similarMoviesList.value = await _similarMoviesService.getList(550);
+    return similarMoviesList.value =
+        await _similarMoviesService.getList(324786);
   }
 }
