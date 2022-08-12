@@ -10,7 +10,7 @@ void main() {
       title: "Application",
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      initialRoute: AppPages.INITIAL,
+      initialRoute: AppPages.initial,
       getPages: AppPages.routes,
     ),
   );
