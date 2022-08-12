@@ -27,7 +27,7 @@ class ListTileMovieListWidget extends StatelessWidget {
             width: 5,
           ),
           Row(
-            children: genreList.map((e) => Text('$e, ')).toList(),
+            children: genreList.map((e) => Text(e)).toList(),
           )
         ],
       ),
