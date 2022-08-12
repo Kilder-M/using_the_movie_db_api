@@ -5,7 +5,7 @@ import 'package:using_the_movie_db_api/app/domain/models/movie_model.dart';
 import 'package:using_the_movie_db_api/app/domain/services/movie_service.dart';
 
 void main() {
-  group('Testing movie service methods:', () {
+  group('Testing movie service class:', () {
     final movieService = MovieService(MovieImpl(DioImpl()));
 
     test('Should return a movie', () async {

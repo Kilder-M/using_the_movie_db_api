@@ -4,7 +4,7 @@ import 'package:using_the_movie_db_api/app/domain/models/similar_movies_model.da
 import 'package:using_the_movie_db_api/app/modules/home/controllers/home_controller.dart';
 
 void main() {
-  group('Test about the home controller: ', () {
+  group('Testing home controller: class', () {
     final homeController = HomeController();
 
     test('Should return a movie', () async {
@@ -15,6 +15,11 @@ void main() {
     test('Should return a similar movie list', () async {
       final similarMoviesList = await homeController.getSimilarMoviesList();
       expect(similarMoviesList, isA<List<SimilarMovies>>());
+    });
+
+    test('Should return a genre list', () async {
+      final genreList = await homeController.getGenreList();
+      expect(genreList, isA<List<Genre>>());
     });
   });
 }

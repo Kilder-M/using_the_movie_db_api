@@ -5,7 +5,7 @@ import 'package:using_the_movie_db_api/app/domain/models/similar_movies_model.da
 import 'package:using_the_movie_db_api/app/domain/services/similar_movies_service.dart';
 
 void main() {
-  group('Testing movie service methods:', () {
+  group('Testing movie service class:', () {
     final similarMoviesService =
         SimilarMoviesService(SimilarMoviesImpl(DioImpl()));
 
