@@ -41,29 +41,6 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  Center circularProgressIndicator() {
-    return const Center(
-      child: CircularProgressIndicator(
-        color: Colors.white,
-        strokeWidth: 1,
-      ),
-    );
-  }
-
-  Padding backButtonRow() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 15.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          BackButtonWidget(
-            onTapButton: () {},
-          )
-        ],
-      ),
-    );
-  }
-
   Container containerBlackContent(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.50,
@@ -96,29 +73,61 @@ class HomeView extends GetView<HomeController> {
               popularityQuantity: controller.movie.value.popularity.toString(),
               likesQuantity: controller.movie.value.voteCount),
           FutureBuilder(
-              future: controller.getSimilarMoviesList(),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return circularProgressIndicator();
-                } else {
-                  return Expanded(
-                    child: ListView.builder(
-                      itemCount: controller.similarMoviesList.length,
-                      itemBuilder: ((context, index) {
-                        var genreList = ['teste01', 'teste02'];
-                        var similarMovies = controller.similarMoviesList[index];
-                        return ListTileMovieListWidget(
-                            imageUrl: API.requestMovieImage(
-                                similarMovies.posterPath ?? ''),
-                            textTitle: similarMovies.title ?? '',
-                            genreList: genreList,
-                            releaseDate: similarMovies.releaseDate.toString());
-                      }),
-                    ),
-                  );
-                }
-              })
+            future: controller.getSimilarMoviesList(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return circularProgressIndicator();
+              } else {
+                return Expanded(
+                  child: ListView.builder(
+                    itemCount: controller.similarMoviesList.length,
+                    itemBuilder: ((context, index) {
+                      var similarMovies = controller.similarMoviesList[index];
+                      var firstGenre = controller.genrelist
+                          .where(
+                            (e) => e.id == similarMovies.genreIds!.first,
+                          )
+                          .first
+                          .obs;
+                      return Obx(
+                        () => ListTileMovieListWidget(
+                          imageUrl: API.requestMovieImage(
+                              similarMovies.posterPath ?? ''),
+                          textTitle: similarMovies.title ?? '',
+                          genreList: [firstGenre.value.name ?? ''],
+                          releaseDate: similarMovies.releaseDate.toString(),
+                        ),
+                      );
+                    }),
+                  ),
+                );
+              }
+            },
+          )
         ],
+      ),
+    );
+  }
+
+  Padding backButtonRow() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 15.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          BackButtonWidget(
+            onTapButton: () {},
+          )
+        ],
+      ),
+    );
+  }
+
+  Center circularProgressIndicator() {
+    return const Center(
+      child: CircularProgressIndicator(
+        color: Colors.white,
+        strokeWidth: 1,
       ),
     );
   }
