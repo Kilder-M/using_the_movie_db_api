@@ -5,4 +5,6 @@ class API {
   static String requestMovie(int id) => '/movie/$id';
 
   static String requestMoviesSimilar(int id) => '/movie/$id/similar';
+
+  static String requestGenre() => 'genre/movie/list';
 }
