@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:using_the_movie_db_api/app/data/dao/genre_impl.dart';
 import 'package:using_the_movie_db_api/app/domain/models/movie_model.dart';
 

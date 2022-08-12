@@ -7,7 +7,7 @@ void main() {
   final dioImpl = DioImpl();
   final movieImpl = MovieImpl(dioImpl);
 
-  group('Test about get a movie: ', () {
+  group('Testing movie implements class: ', () {
     test('should return a movie object', () async {
       Movie movie = await movieImpl.getMovieById(550);
       expect(movie, isA<Movie>());

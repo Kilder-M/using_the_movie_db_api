@@ -7,7 +7,7 @@ void main() {
   final dioImpl = DioImpl();
   final similarMoviesImpl = SimilarMoviesImpl(dioImpl);
 
-  group('Test about get a similar movies list: ', () {
+  group('Testing similar movies implements class: ', () {
     test('should return a similar movies list', () async {
       List<SimilarMovies> similarMoviesList =
           await similarMoviesImpl.getList(550);
