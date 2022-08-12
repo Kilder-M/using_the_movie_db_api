@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:using_the_movie_db_api/app/data/api.dart';
 import 'package:using_the_movie_db_api/app/modules/home/widgets/background_image_widget.dart';
 import 'package:using_the_movie_db_api/app/modules/home/widgets/likes_and_popularity_row_widget.dart';
@@ -19,7 +20,7 @@ class HomeView extends GetView<HomeController> {
         future: controller.getMovie(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return circularProgressIndicator();
+            return loadingAnimation();
           } else {
             return BackgroundImageWidget(
               imageUrl:
@@ -37,6 +38,19 @@ class HomeView extends GetView<HomeController> {
             );
           }
         },
+      ),
+    );
+  }
+
+  Center loadingAnimation() {
+    return Center(
+      child: LottieBuilder.asset(
+        'assets/animations/loading_animation.json',
+        height: 120,
+        width: 120,
+        alignment: Alignment.center,
+        errorBuilder: (context, error, stackTrace) =>
+            circularProgressIndicator(),
       ),
     );
   }
