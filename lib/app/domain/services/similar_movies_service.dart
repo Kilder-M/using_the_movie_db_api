@@ -5,7 +5,8 @@ class SimilarMoviesService {
   final SimilarMoviesImpl _similarMoviesImpl;
   SimilarMoviesService(this._similarMoviesImpl);
 
-  Future<List<SimilarMovies>> getList(int id) async {
-    return await _similarMoviesImpl.getList(id);
+  Future<List<SimilarMovies>> getList(int id,
+      [Map<String, dynamic>? params]) async {
+    return await _similarMoviesImpl.getList(id, params);
   }
 }

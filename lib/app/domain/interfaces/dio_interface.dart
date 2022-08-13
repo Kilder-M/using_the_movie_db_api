@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
 
 abstract class DioInterface {
-  Dio getDio();
+  Dio getDio(Map<String, dynamic> params);
 }
