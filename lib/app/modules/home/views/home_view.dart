@@ -31,7 +31,7 @@ class HomeView extends GetView<HomeController> {
                   children: [
                     backButtonRow(),
                     const Spacer(),
-                    containerBlackContent(context),
+                    containerBlackContent(context, controller.scrollController),
                   ],
                 ),
               ),
@@ -55,7 +55,8 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  Container containerBlackContent(BuildContext context) {
+  Container containerBlackContent(
+      BuildContext context, ScrollController scrollController) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.50,
       width: double.infinity,
@@ -93,26 +94,29 @@ class HomeView extends GetView<HomeController> {
                 return circularProgressIndicator();
               } else {
                 return Expanded(
-                  child: ListView.builder(
-                    itemCount: controller.similarMoviesList.length,
-                    itemBuilder: ((context, index) {
-                      var similarMovies = controller.similarMoviesList[index];
-                      var firstGenre = controller.genrelist
-                          .where(
-                            (e) => e.id == similarMovies.genreIds!.first,
-                          )
-                          .first
-                          .obs;
-                      return Obx(
-                        () => ListTileMovieListWidget(
-                          imageUrl: API.requestMovieImage(
-                              similarMovies.posterPath ?? ''),
-                          textTitle: similarMovies.title ?? '',
-                          genreList: [firstGenre.value.name ?? ''],
-                          releaseDate: similarMovies.releaseDate.toString(),
-                        ),
-                      );
-                    }),
+                  child: Obx(
+                    () => ListView.builder(
+                      controller: scrollController,
+                      itemCount: controller.similarMoviesList.length,
+                      itemBuilder: ((context, index) {
+                        var similarMovies = controller.similarMoviesList[index];
+                        var firstGenre = controller.genrelist
+                            .where(
+                              (e) => e.id == similarMovies.genreIds!.first,
+                            )
+                            .first
+                            .obs;
+                        return Obx(
+                          () => ListTileMovieListWidget(
+                            imageUrl: API.requestMovieImage(
+                                similarMovies.posterPath ?? ''),
+                            textTitle: similarMovies.title ?? '',
+                            genreList: [firstGenre.value.name ?? ''],
+                            releaseDate: similarMovies.releaseDate.toString(),
+                          ),
+                        );
+                      }),
+                    ),
                   ),
                 );
               }

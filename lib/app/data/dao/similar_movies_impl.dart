@@ -11,9 +11,11 @@ class SimilarMoviesImpl implements SimilarMoviesInterface {
   SimilarMoviesImpl(this._dio);
 
   @override
-  Future<List<SimilarMovies>> getList(int id) async {
+  Future<List<SimilarMovies>> getList(int id,
+      [Map<String, dynamic>? params]) async {
     try {
-      final response = await _dio.getDio().get(API.requestMoviesSimilar(id));
+      final response =
+          await _dio.getDio(params).get(API.requestMoviesSimilar(id));
       List<SimilarMovies> movieSimiliarList = (response.data['results'] as List)
           .map((e) => SimilarMovies.fromJson(e))
           .toList();
