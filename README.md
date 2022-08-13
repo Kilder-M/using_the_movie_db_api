@@ -24,8 +24,7 @@ Conceitos e ferramentas utilizadas:
 
 Para instalação, basta clonar o repositorio e rodar o projeto na sua maquina.
 
-![img](https://github.com/Kilder-M/
-using_the_movie_db_api/blob/main/assets/images/app_print.png)
+![img](https://github.com/Kilder-M/using_the_movie_db_api/blob/main/assets/images/app_print.PNG)
 
 ## Feito Com
 
